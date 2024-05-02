@@ -92,23 +92,21 @@ export default function Home({ statusCode, users }: TGetServerSideProps) {
               ))}
             </tbody>
           </Table>
-          <div className={"pagination"}>
-            <Pagination>
-              <Pagination.Prev
-                onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
-                disabled={currentPage === 1}
-              />
-              {Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i).map((page) => (
-                <Pagination.Item key={page} active={page === currentPage} onClick={() => setCurrentPage(page)}>
-                  {page}
-                </Pagination.Item>
-              ))}
-              <Pagination.Next
-                onClick={() => setCurrentPage(Math.min(totalAmountOfPages, currentPage + 1))}
-                disabled={currentPage === totalAmountOfPages}
-              />
-            </Pagination>
-          </div>
+          <Pagination>
+            <Pagination.Prev
+              onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+              disabled={currentPage === 1}
+            />
+            {Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i).map((page) => (
+              <Pagination.Item key={page} active={page === currentPage} onClick={() => setCurrentPage(page)}>
+                {page}
+              </Pagination.Item>
+            ))}
+            <Pagination.Next
+              onClick={() => setCurrentPage(Math.min(totalAmountOfPages, currentPage + 1))}
+              disabled={currentPage === totalAmountOfPages}
+            />
+          </Pagination>
         </Container>
       </main>
     </>
